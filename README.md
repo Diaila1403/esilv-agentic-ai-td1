@@ -20,7 +20,7 @@ Les fichiers sont organisés de la manière suivante :
 ## Méthode de travail
 Les cinq modèles ont été testés sur les mêmes 20 questions afin de pouvoir comparer leurs performances.
 Les réponses ont été enregistrées dans des fichiers CSV, puis regroupées dans des tableaux pour faciliter leur analyse.
-paraison permet d'identifier les différences entre les modèles et de mieux comprendre leurs limites.
+Cette comparaison permet d'identifier les différences entre les modèles et de mieux comprendre leurs limites.
 
 ## Résultats
 Les résultats des tests sont disponibles dans les fichiers CSV du dépôt. Ils permettent de comparer les réponses des cinq modèles et d'observer leurs performances sur les différentes questions.
