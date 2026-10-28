@@ -8,7 +8,7 @@ Le travail consiste à analyser les réponses des modèles, à comparer leurs r�
 
 ## Contenu du dépôt
 Les fichiers sont organisés de la manière suivante :
-- `td1.md` : énoncé et consignes du TD.
+- `td1.md` : rapport du TD présentant la méthodologie, les résultats et leur analyse.
 - `reference-td1.csv` : données de référence utilisées pour les comparaisons.
 - `traces-A.csv` à `traces-E.csv` : résultats obtenus avec les cinq modèles.
 - `traces-td1.csv` : fichier regroupant les traces du TD.
