@@ -1,4 +1,4 @@
-# TD 1 · 21 October 2026 · Comparing models on the same questions
+# TD 1 21 October 2026 · Comparing models on the same questions
 
 Sub-group **DIA5-G3** (DIA5) · assignment: [TD 1](https://storage.googleapis.com/docs.g.quanticfactory.io/ESILV/next-generation-ai/latest/students/kit-td1/enonce-td1-en.html) · session report: [`reports/td1.md`](../reports/td1.md)
 
