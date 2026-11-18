@@ -77,5 +77,3 @@ Python 3.13, no key, no network. Two commits: `23d0b80` (`main` when reviewed) a
 3. For "what if the first model is unavailable": `python3 td2/C-routing/atelier-routage.py --scenario "first model unavailable"`, then `--scenario deferrable`.
 
 ---
-
-*AI assistance, declared as the assessment requires:* this review was drafted with Claude from the re-runs above, and Pair A checked it and remains responsible for it. Prompt as used, 18 November 2026: "remplie la review 1 pour la pair C ( je suis pair A) : https://github.com/Diaila1403/esilv-agentic-ai-td1/tree/main/td2/C-routing".
