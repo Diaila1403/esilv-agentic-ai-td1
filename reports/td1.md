@@ -1,10 +1,10 @@
-# TD1 — Trustworthy Generative AI: Text-to-SQL Evaluation
+# TD1: Trustworthy Generative AI: Text-to-SQL Evaluation
 
 **Course:** Next Generation AI 
 **Session:** 21 October 2026  
 **Group:** DIA5-G3  
 **Repository:** https://github.com/Diaila1403/esilv-agentic-ai-td1  
-**Members:** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAQ, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
+**Members:** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAG, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
 
 ## 1. Objective and methodology
 
