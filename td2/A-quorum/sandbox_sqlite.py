@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """Read-only SQLite sandbox for model-generated queries.
 
 Every query produced by a model runs through `execute_query`:
