@@ -1,9 +1,9 @@
 # TD 2 · Pair B · Step 2: the wrong consensus
 
-**Members:** *[to complete]* · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
-**Report section:** [`reports/td2.md`, Step 2](../../reports/td2.md#step-2--the-wrong-consensus-pair-b) · **Reviews received:** [`review-1.md`](review-1.md) by Pair A (to write), [`review-2.md`](review-2.md) by Pair C (pending)
+**Members:** Simeon SIMEONOV, Arthur GAUCHÉ, Imane BOUNA MOCTAR · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
+**Report section:** [`reports/td2.md`, Step 2](../../reports/td2.md#step-2--the-wrong-consensus-pair-b) · **Reviews received:** [`review-1.md`](review-1.md) by Pair A (to write), [`review-2.md`](review-2.md) by Pair C (done)
 
-> **Status: not pushed yet.** Folder created by Pair C for the per-pair layout on 18 November 2026. Pair B replaces this README with its own: what was done, files, commands that replay it, results.
+> **Status:** Step 2 is written in [`reports/td2.md`](../../reports/td2.md#step-2--the-wrong-consensus-pair-b) (case **C09**, commit `04c8f06`); no file of Pair B in this folder yet. Pair B replaces this README with its own: what was done, files, commands that replay it, results (see change 1 of [`review-2.md`](review-2.md)).
 
 ## Expected in this folder (assignment, Step 2, and assessment, Q2)
 

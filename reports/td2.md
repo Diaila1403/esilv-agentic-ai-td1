@@ -10,7 +10,7 @@ Each pair owns one step and one folder under [`td2/`](../td2/README.md). Each fo
 | Step | Pair | Folder | Status at this commit |
 |---|---|---|---|
 | 1. k-of-n vote | A | [`td2/A-quorum/`](../td2/A-quorum/README.md) | done; reviewed by Pair C |
-| 2. Wrong consensus | B | [`td2/B-consensus/`](../td2/B-consensus/README.md) | section written (case C09); awaiting the reviews of Pairs A and C |
+| 2. Wrong consensus | B | [`td2/B-consensus/`](../td2/B-consensus/README.md) | section written (case C09); reviewed by Pair C, review by Pair A to write |
 | 3. Routing rule | C | [`td2/C-routing/`](../td2/C-routing/README.md) | done; awaiting the reviews of Pairs A and B |
 
 Evidence: the 104 **real** calls of [`traces-td1.csv`](../td1/traces-td1.csv) (21 October 2026) and [`reference-td1.csv`](../td1/reference-td1.csv); no new network call in TD 2. Synthetic vote examples and simulator states are labelled **simulation**.
@@ -118,7 +118,7 @@ This demonstrates the importance of selecting models carefully and defining an a
 
 ## Step 2 — The wrong consensus (Pair B)
 
-Folder: [`td2/B-consensus/`](../td2/B-consensus/README.md). Review by Pair C, pending: [`review-2.md`](../td2/B-consensus/review-2.md).
+Folder: [`td2/B-consensus/`](../td2/B-consensus/README.md). Review by Pair C: [`review-2.md`](../td2/B-consensus/review-2.md).
 
 **Nature of the evidence.** Real batch. The case comes from our own `traces-td1.csv` (104 real rows, five models, last attempt of each model for each question) and `reference-td1.csv`. It is not synthetic and not a supplied example. No new network call in TD 2. The quorum results are counted by hand from the stored traces; they match Pair A's table.
 
@@ -395,6 +395,11 @@ A subscription has `cash == 0`, so it belongs to `included` whatever its `alloca
 - Availability states, refill times and the subscription quota figures of the demo are assumptions (simulation). The 2,000 / 500 token envelope over-estimates the measured TD 1 means (560 to 641 tokens in, 135 to 279 out).
 - The reference check assumes that the question matches a validated family template; a question outside the eight families has no reference and no TD 1 evidence (*unknown capability*).
 
+### 8. Contribution and AI assistance
+
+- Pair C, Step 3: Jean VASSEUR, Lina ZAAQ.
+- AI-assisted work, declared as the assessment requires: Claude Code was used to write the Step 3 scripts, compute the tables, draft this section and draft Pair C's reviews of Pairs A and B, from the traces, the assignment and Lecture 2. Prompts as used, 18 November 2026: "Ensuite il faut faire le td2 ici : https://storage.googleapis.com/docs.g.quanticfactory.io/ESILV/next-generation-ai/latest/index.html, moi je suis chargé de la partie STEP3 (pair C), fais la pour moi."; "il faut mettre un sous dossier par binome , avec un readme par binome et par TD  et une review opur les autres binomes, fais les reviews des autres et push tout"; "ok la paire B a push , fais la review et push". Pair C re-ran every command and query cited and remains responsible for every line.
+
 ## Cross-review (16:45 to 17:15)
 
 Every pair reviews the two others; a review states what was re-run, what holds, what must change, and is filed in the folder of the reviewed pair. The files still to write already hold the outline of a review.
@@ -402,7 +407,7 @@ Every pair reviews the two others; a review states what was re-run, what holds, 
 | Reviewed | Reviewer | Review | Status |
 |---|---|---|---|
 | Pair A | Pair C | [`td2/A-quorum/review-2.md`](../td2/A-quorum/review-2.md) | done: contract met (13/13 checks), CSV reproduced byte-identical, independent count agrees; two reproducibility fixes applied, four changes requested |
-| Pair B | Pair C | [`td2/B-consensus/review-2.md`](../td2/B-consensus/review-2.md) | pending: nothing pushed at the time of review; checklist ready |
+| Pair B | Pair C | [`td2/B-consensus/review-2.md`](../td2/B-consensus/review-2.md) | done: every figure reproduced (the three shared wrong values C08, C09, C10; the C09 quorums; the SQL results; the delta total 487980); four changes requested: evidence files and README in the folder, a delta query that uses the faulty clauses, the north-mini-code query verbatim, the vote shown with `atelier-vote.py` |
 | Pair A | Pair B | [`td2/A-quorum/review-1.md`](../td2/A-quorum/review-1.md) | to write |
 | Pair B | Pair A | [`td2/B-consensus/review-1.md`](../td2/B-consensus/review-1.md) | to write |
 | Pair C | Pair A | [`td2/C-routing/review-1.md`](../td2/C-routing/review-1.md) | to write |
@@ -414,5 +419,11 @@ Every pair reviews the two others; a review states what was re-run, what holds, 
 |---|---|---|
 | A | Diaila DIALLO, Meriam BOUMEDIENE, | Step 1: `vote_k_sur_n`, synthetic examples, 2-of-3 versus 3-of-5 table |
 | B | Simeon SIMEONOV, Arthur GAUCHE, Imane BOUNA MOCTAR | Step 2: wrong consensus C09, faulty SQL diagnosis, delta SQL query |
-| C | Jean VASSEUR, LINA ZAAQ | Step 3: rates per family, routing rule, adapted simulator, priority analysis; per-pair layout; reviews of Pairs A and B |
+| C | Jean VASSEUR, Lina ZAAQ | Step 3: rates per family, routing rule, adapted simulator, priority analysis; per-pair layout; reviews of Pairs A and B |
 
+## Next steps
+
+1. Pair B commits its Step 2 evidence in `td2/B-consensus/` (queries, delta query and output, README with the commands) and applies its review.
+2. Pair A writes its reviews of Pairs B and C; Pair B writes its reviews of Pairs A and C.
+3. Pair A applies the changes requested in its review and confirms the two fixes made by Pair C.
+4. TD 3: cost of each configuration. The age families (F2 and its combinations) are the questions no free model answers alone without a reference check: they set the price of checking.

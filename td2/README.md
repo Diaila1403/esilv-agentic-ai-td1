@@ -9,7 +9,7 @@ Input of the whole session: the TD 1 outputs in [`td1/`](../td1/README.md), main
 | Step | Pair | Folder | What is in it | Status |
 |---|---|---|---|---|
 | 1. The k-of-n vote | A | [`A-quorum/`](A-quorum/README.md) | `vote_k_sur_n`, driver, twenty-question table 2-of-3 versus 3-of-5 | done, reviewed by C |
-| 2. The wrong consensus | B | [`B-consensus/`](B-consensus/README.md) | shared wrong value, faulty SQL clause, delta query | not pushed yet |
+| 2. The wrong consensus | B | [`B-consensus/`](B-consensus/README.md) | shared wrong value, faulty SQL clause, delta query | written in the report (C09), reviewed by C; evidence files to commit |
 | 3. The routing rule | C | [`C-routing/`](C-routing/README.md) | rates per family, one-page rule, simulator before and after, priority analysis | done, to be reviewed by A and B |
 
 Each folder holds the pair's files, its `README.md` (what was done, files, replay commands, results) and the two reviews it received, `review-1.md` and `review-2.md`, written by the two other pairs in alphabetical order.
@@ -19,7 +19,7 @@ Each folder holds the pair's files, its `README.md` (what was done, files, repla
 | Folder | `review-1.md` | `review-2.md` |
 |---|---|---|
 | `A-quorum/` | by Pair B: [to write](A-quorum/review-1.md) | by Pair C: [done](A-quorum/review-2.md) |
-| `B-consensus/` | by Pair A: [to write](B-consensus/review-1.md) | by Pair C: [pending](B-consensus/review-2.md), nothing pushed yet |
+| `B-consensus/` | by Pair A: [to write](B-consensus/review-1.md) | by Pair C: [done](B-consensus/review-2.md) |
 | `C-routing/` | by Pair A: [to write](C-routing/review-1.md) | by Pair B: [to write](C-routing/review-2.md) |
 
 ## Replay everything (from the repository root, Python 3, no key, no network)
