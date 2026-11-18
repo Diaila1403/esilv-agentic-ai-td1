@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """Cross-review tool written by Pair C: checks vote_k_sur_n against the TD 2 contract.
 
 Exercises the cases that atelier-vote.py does not cover: duplicate provider and
