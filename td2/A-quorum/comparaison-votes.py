@@ -4,6 +4,7 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
 
+
 # Files (paths fixed by Pair C at the cross-review: the script runs from any
 # directory of a fresh clone; it used to read the current directory and a kit
 # copy in the author's Downloads folder)
