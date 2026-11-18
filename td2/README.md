@@ -18,9 +18,9 @@ Each folder holds the pair's files, its `README.md` (what was done, files, repla
 
 | Folder | `review-1.md` | `review-2.md` |
 |---|---|---|
-| `A-quorum/` | by Pair B: [to write](A-quorum/review-1.md) | by Pair C: [done](A-quorum/review-2.md) |
-| `B-consensus/` | by Pair A: [to write](B-consensus/review-1.md) | by Pair C: [done](B-consensus/review-2.md) |
-| `C-routing/` | by Pair A: [to write](C-routing/review-1.md) | by Pair B: [to write](C-routing/review-2.md) |
+| `A-quorum/` | by Pair B: (A-quorum/review-1.md) | by Pair C: (A-quorum/review-2.md) |
+| `B-consensus/` | by Pair A: (B-consensus/review-1.md) | by Pair C: (B-consensus/review-2.md) |
+| `C-routing/` | by Pair A: (C-routing/review-1.md) | by Pair B: (C-routing/review-2.md) |
 
 ## Replay everything (from the repository root, Python 3, no key, no network)
 
