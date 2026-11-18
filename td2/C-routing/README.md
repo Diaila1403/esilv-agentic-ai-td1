@@ -1,6 +1,6 @@
 # TD 2 · Pair C · Step 3: the routing rule
 
-**Members:** Jean VASSEUR, *[partner to complete]* · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
+**Members:** Jean VASSEUR, Lina Zaag · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
 **Report section:** [`reports/td2.md`, Step 3](../../reports/td2.md#step-3--the-routing-rule-pair-c) · **One-page rule:** [`routing-rule-en.md`](routing-rule-en.md)
 
 ## What we did
