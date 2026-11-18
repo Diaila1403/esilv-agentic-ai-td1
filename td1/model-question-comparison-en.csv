@@ -99,3 +99,4 @@ C17,dots-studio/dots-3-note-preview:free,traces-td1.csv,openrouter:dots-studio/d
 C18,dots-studio/dots-3-note-preview:free,traces-td1.csv,openrouter:dots-studio/dots-3-note-preview:free:C18,real,incorrect,39580,62480,Convention broken (age at the time of the order). Year difference o.date - birth_date = 25 plus a birthday-reached test; a completed age of 25 also occurs when the year difference is 26 and the birthday has not yet been reached; a year-difference test that stops at 25 misses that half of the customers: 39580 instead of 62480.
 C19,dots-studio/dots-3-note-preview:free,traces-td1.csv,openrouter:dots-studio/dots-3-note-preview:free:C19,real,correct,1990,1990,Value equals the reference (attempt 1).
 C20,dots-studio/dots-3-note-preview:free,traces-td1.csv,openrouter:dots-studio/dots-3-note-preview:free:C20,real,correct,1106090,1106090,Value equals the reference (attempt 1).
+
