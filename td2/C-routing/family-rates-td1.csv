@@ -1,0 +1,41 @@
+family,label,level,cells,provider,model,correct,cases,rate,correct_cells,wrong_cells,unavailable_cells,model_eligibility_level,nature
+F1,period,1,C01 C04 C05 C06 C07 C20,groq,openai/gpt-oss-120b,6,6,1.00,C01 C04 C05 C06 C07 C20,,,3,real TD 1 traces
+F3,product list,1,C03 C12 C13 C14,groq,openai/gpt-oss-120b,4,4,1.00,C03 C12 C13 C14,,,3,real TD 1 traces
+F2b,age at the time of the order,2,C10,groq,openai/gpt-oss-120b,1,1,1.00,C10,,,3,real TD 1 traces
+F1+F2b,period + age at the time of the order,2,C18,groq,openai/gpt-oss-120b,1,1,1.00,C18,,,3,real TD 1 traces
+F2,completed age on a reference date,3,C02 C08 C09 C11,groq,openai/gpt-oss-120b,4,4,1.00,C02 C08 C09 C11,,,3,real TD 1 traces
+F1+F2,period + completed age on a reference date,3,C15,groq,openai/gpt-oss-120b,1,1,1.00,C15,,,3,real TD 1 traces
+F2+F3,completed age on a reference date + product list,3,C16,groq,openai/gpt-oss-120b,1,1,1.00,C16,,,3,real TD 1 traces
+F1+F2+F3,period + completed age on a reference date + product list,3,C17 C19,groq,openai/gpt-oss-120b,2,2,1.00,C17 C19,,,3,real TD 1 traces
+F1,period,1,C01 C04 C05 C06 C07 C20,groq,openai/gpt-oss-20b,6,6,1.00,C01 C04 C05 C06 C07 C20,,,2,real TD 1 traces
+F3,product list,1,C03 C12 C13 C14,groq,openai/gpt-oss-20b,4,4,1.00,C03 C12 C13 C14,,,2,real TD 1 traces
+F2b,age at the time of the order,2,C10,groq,openai/gpt-oss-20b,1,1,1.00,C10,,,2,real TD 1 traces
+F1+F2b,period + age at the time of the order,2,C18,groq,openai/gpt-oss-20b,1,1,1.00,C18,,,2,real TD 1 traces
+F2,completed age on a reference date,3,C02 C08 C09 C11,groq,openai/gpt-oss-20b,2,4,0.50,C08 C09,"C02=0, C11=322160",,2,real TD 1 traces
+F1+F2,period + completed age on a reference date,3,C15,groq,openai/gpt-oss-20b,1,1,1.00,C15,,,2,real TD 1 traces
+F2+F3,completed age on a reference date + product list,3,C16,groq,openai/gpt-oss-20b,1,1,1.00,C16,,,2,real TD 1 traces
+F1+F2+F3,period + completed age on a reference date + product list,3,C17 C19,groq,openai/gpt-oss-20b,2,2,1.00,C17 C19,,,2,real TD 1 traces
+F1,period,1,C01 C04 C05 C06 C07 C20,groq,qwen/qwen3.8-27b,5,6,0.83,C01 C04 C05 C06 C07,,C20 HTTP 429,2,real TD 1 traces
+F3,product list,1,C03 C12 C13 C14,groq,qwen/qwen3.8-27b,4,4,1.00,C03 C12 C13 C14,,,2,real TD 1 traces
+F2b,age at the time of the order,2,C10,groq,qwen/qwen3.8-27b,1,1,1.00,C10,,,2,real TD 1 traces
+F1+F2b,period + age at the time of the order,2,C18,groq,qwen/qwen3.8-27b,1,1,1.00,C18,,,2,real TD 1 traces
+F2,completed age on a reference date,3,C02 C08 C09 C11,groq,qwen/qwen3.8-27b,3,4,0.75,C02 C08 C11,C09=0,,2,real TD 1 traces
+F1+F2,period + completed age on a reference date,3,C15,groq,qwen/qwen3.8-27b,0,1,0.00,,C15=0,,2,real TD 1 traces
+F2+F3,completed age on a reference date + product list,3,C16,groq,qwen/qwen3.8-27b,1,1,1.00,C16,,,2,real TD 1 traces
+F1+F2+F3,period + completed age on a reference date + product list,3,C17 C19,groq,qwen/qwen3.8-27b,0,2,0.00,,C19=83580,C17 HTTP 429,2,real TD 1 traces
+F1,period,1,C01 C04 C05 C06 C07 C20,openrouter,cohere/north-mini-code:free,5,6,0.83,C04 C05 C06 C07 C20,,C01 HTTP 401,1,real TD 1 traces
+F3,product list,1,C03 C12 C13 C14,openrouter,cohere/north-mini-code:free,4,4,1.00,C03 C12 C13 C14,,,1,real TD 1 traces
+F2b,age at the time of the order,2,C10,openrouter,cohere/north-mini-code:free,0,1,0.00,,C10=119410,,1,real TD 1 traces
+F1+F2b,period + age at the time of the order,2,C18,openrouter,cohere/north-mini-code:free,1,1,1.00,C18,,,1,real TD 1 traces
+F2,completed age on a reference date,3,C02 C08 C09 C11,openrouter,cohere/north-mini-code:free,1,4,0.25,C11,"C08=0, C09=0",C02 HTTP 401,1,real TD 1 traces
+F1+F2,period + completed age on a reference date,3,C15,openrouter,cohere/north-mini-code:free,1,1,1.00,C15,,,1,real TD 1 traces
+F2+F3,completed age on a reference date + product list,3,C16,openrouter,cohere/north-mini-code:free,1,1,1.00,C16,,,1,real TD 1 traces
+F1+F2+F3,period + completed age on a reference date + product list,3,C17 C19,openrouter,cohere/north-mini-code:free,1,2,0.50,C19,C17=371990,,1,real TD 1 traces
+F1,period,1,C01 C04 C05 C06 C07 C20,openrouter,dots-studio/dots-3-note-preview:free,6,6,1.00,C01 C04 C05 C06 C07 C20,,,1,real TD 1 traces
+F3,product list,1,C03 C12 C13 C14,openrouter,dots-studio/dots-3-note-preview:free,4,4,1.00,C03 C12 C13 C14,,,1,real TD 1 traces
+F2b,age at the time of the order,2,C10,openrouter,dots-studio/dots-3-note-preview:free,0,1,0.00,,C10=119410,,1,real TD 1 traces
+F1+F2b,period + age at the time of the order,2,C18,openrouter,dots-studio/dots-3-note-preview:free,0,1,0.00,,C18=39580,,1,real TD 1 traces
+F2,completed age on a reference date,3,C02 C08 C09 C11,openrouter,dots-studio/dots-3-note-preview:free,1,4,0.25,C11,"C02=135000, C08=0, C09=47900",,1,real TD 1 traces
+F1+F2,period + completed age on a reference date,3,C15,openrouter,dots-studio/dots-3-note-preview:free,1,1,1.00,C15,,,1,real TD 1 traces
+F2+F3,completed age on a reference date + product list,3,C16,openrouter,dots-studio/dots-3-note-preview:free,0,1,0.00,,C16=211260,,1,real TD 1 traces
+F1+F2+F3,period + completed age on a reference date + product list,3,C17 C19,openrouter,dots-studio/dots-3-note-preview:free,1,2,0.50,C19,C17=152730,,1,real TD 1 traces

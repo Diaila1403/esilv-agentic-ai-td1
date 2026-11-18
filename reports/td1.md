@@ -64,12 +64,12 @@ The dataset includes only 20 questions, so these results cannot establish genera
 
 ## 5. Evidence and reproducibility
 
-- [Reference SQL and expected revenue values](../reference-td1.csv)
-- [Consolidated real-call traces](../traces-td1.csv)
-- [Model B CSV traces](../traces-B.csv)
-- [Model B JSONL traces](../traces-B.jsonl)
-- [Model-by-question comparison](../model-question-comparison-en.csv)
-- [Five-model summary](../five-model-summary-en.csv)
+- [Reference SQL and expected revenue values](../td1/reference-td1.csv)
+- [Consolidated real-call traces](../td1/traces-td1.csv)
+- [Model B CSV traces](../td1/traces-B.csv)
+- [Model B JSONL traces](../td1/traces-B.jsonl)
+- [Model-by-question comparison](../td1/model-question-comparison-en.csv)
+- [Five-model summary](../td1/five-model-summary-en.csv)
 
 The links above refer to the expected repository paths; confirm that each file exists at that path before submission. Preserve the original raw traces alongside the cleaned consolidated CSV. Do not include API keys or other secrets in the repository.
 

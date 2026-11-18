@@ -1,31 +1,48 @@
 # esilv-agentic-ai-td1
-# TD1 : Trustworthy Generative AI
+# Trustworthy Generative AI : TD1 à TD3
+
+**Classe :** DIA5 · **Sous-groupe :** DIA5-G3 · **Membres :** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAQ, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
 
 ## Présentation du projet
-Ce dépôt contient le travail réalisé dans le cadre du TD1 du cours Next Generation AI à l'ESILV.
-L'objectif de ce TD est de tester et de comparer cinq modèles d'intelligence artificielle générative à partir d'une série de 20 questions.
-Le travail consiste à analyser les réponses des modèles, à comparer leurs résultats et à observer leurs différences en matière de fiabilité et de qualité des réponses.
+Ce dépôt contient le travail du sous-groupe pour les trois TD du cours Next Generation AI à l'ESILV (thème « Trustworthy Generative AI »). Le TD1 teste et compare cinq modèles d'IA générative gratuits sur 20 questions text-to-SQL. Le TD2 fait voter ces modèles et écrit la règle de routage. Le TD3 chiffre les configurations et choisit l'une d'elles pour un cas d'usage.
 
-## Contenu du dépôt
-Les fichiers sont organisés de la manière suivante :
-- `td1.md` : rapport du TD présentant la méthodologie, les résultats et leur analyse.
-- `reference-td1.csv` : données de référence utilisées pour les comparaisons.
-- `traces-A.csv` à `traces-E.csv` : résultats obtenus avec les cinq modèles.
-- `traces-td1.csv` : fichier regroupant les traces du TD.
-- `traces-B.jsonl` : traces détaillées du modèle B.
-- `state-A.jsonl`, `state-C.jsonl`, `state-D.jsonl` et `state-E.jsonl` : fichiers d'état des modèles.
-- `five-model-summary-en.csv` : tableau récapitulatif des résultats des cinq modèles.
-- `model-question-comparison-en.csv` : comparaison des réponses des modèles pour chaque question.
+## Organisation du dépôt
 
-## Méthode de travail
-Les cinq modèles ont été testés sur les mêmes 20 questions afin de pouvoir comparer leurs performances.
-Les réponses ont été enregistrées dans des fichiers CSV, puis regroupées dans des tableaux pour faciliter leur analyse.
-Cette comparaison permet d'identifier les différences entre les modèles et de mieux comprendre leurs limites.
+```
+.
+├── README.md
+├── td1/                 TD1 (21/10) : références, traces des cinq modèles, tableaux de synthèse
+│   └── README.md
+├── td2/                 TD2 (18/11) : un dossier par binôme
+│   ├── README.md
+│   ├── A-quorum/        binôme A : vote k-sur-n (Step 1)
+│   │   ├── README.md
+│   │   ├── review-1.md  review par le binôme B
+│   │   ├── review-2.md  review par le binôme C
+│   │   └── ...
+│   ├── B-consensus/     binôme B : faux consensus (Step 2)
+│   │   ├── README.md
+│   │   ├── review-1.md  review par le binôme A
+│   │   ├── review-2.md  review par le binôme C
+│   │   └── ...
+│   └── C-routing/       binôme C : règle de routage (Step 3)
+│       ├── README.md
+│       ├── review-1.md  review par le binôme A
+│       ├── review-2.md  review par le binôme B
+│       └── ...
+├── td3/                 TD3 (11/12)
+│   └── README.md
+└── reports/
+    ├── td1.md
+    ├── td2.md
+    └── td3.md
+```
 
-## Résultats
-Les résultats des tests sont disponibles dans les fichiers CSV du dépôt. Ils permettent de comparer les réponses des cinq modèles et d'observer leurs performances sur les différentes questions.
+Chaque TD a son `README.md` (contenu, fichiers, commandes pour rejouer) et son rapport dans `reports/`. Au TD2, chaque binôme a son dossier avec son `README.md` et les deux reviews reçues des autres binômes : `review-1.md` et `review-2.md`, dans l'ordre alphabétique des binômes relecteurs.
+
+## Rejouer
+
+Python 3 (bibliothèque standard), sans clé ni réseau, depuis la racine du dépôt : voir les commandes de [`td2/README.md`](td2/README.md). Les scripts du TD2 lisent les traces du TD1 dans `td1/`.
 
 ## Informations
-Cours : Next Generation AI
-École : ESILV
-Travail : TD1, Trustworthy Generative AI
+Cours : Next Generation AI · École : ESILV · Rendus : commit enregistré sur Moodle le dimanche qui suit chaque TD, à 23:59.

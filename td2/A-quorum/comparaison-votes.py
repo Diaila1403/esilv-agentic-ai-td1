@@ -1,12 +1,16 @@
-import sys 
+import sys
 import csv
 import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
 
-# Files
-TRACES = Path("traces-td1.csv")
-REFERENCES = Path("reference-td1.csv")
+# Files (paths fixed by Pair C at the cross-review: the script runs from any
+# directory of a fresh clone; it used to read the current directory and a kit
+# copy in the author's Downloads folder)
+HERE = Path(__file__).resolve().parent          # td2/A-quorum/
+ROOT = HERE.parents[1]                          # repository root
+TRACES = ROOT / "td1" / "traces-td1.csv"
+REFERENCES = ROOT / "td1" / "reference-td1.csv"
 
 # Fixed panel from atelier-vote.py
 PANEL_3 = [
@@ -16,7 +20,7 @@ PANEL_3 = [
 ]
 
 # Load the vote method already implemented
-KIT = Path.home() / "Downloads/esilv-student-2026-10-18/kit-td1"
+KIT = HERE  # the completed skeleton committed next to this script
 spec = importlib.util.spec_from_file_location(
     "student_skeleton", KIT / "skeleton-multi-llm-en.py"
 )
@@ -103,7 +107,7 @@ for case in sorted(references):
     })
 
 # Save the comparison
-output = Path("comparaison-votes.csv")
+output = HERE / "comparaison-votes.csv"
 with output.open("w", encoding="utf-8", newline="") as f:
     writer = csv.DictWriter(f, fieldnames=results[0].keys())
     writer.writeheader()
