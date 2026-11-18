@@ -1,0 +1,287 @@
+{
+  "policy": "dia5-g3-routing-v1",
+  "date": "2026-11-18",
+  "author": "Pair C, sub-group DIA5-G3",
+  "nature": "Routing rule of TD 2 Step 3. TD 1 evidence is read by code from ../traces-td1.csv (104 real calls, 21 October 2026). Resource availability in the scenarios is a simulation assumption, not a measurement.",
+  "traces": "traces-td1.csv",
+  "token_envelope": {
+    "input": 2000,
+    "output": 500,
+    "source": "Lecture 2, slide 'Four cases, with real prices': short question, 2,000 tokens in, 500 out (Lecture 1, slide 9). TD 1 measured means are lower (560 to 641 in, 135 to 279 out), so the envelope over-estimates the cost."
+  },
+  "levels": {
+    "1": "Period and product filters only (F1, F3): no model returned a wrong value on these 10 cells.",
+    "2": "Age at the time of the order (F2b, F1+F2b): per-order date arithmetic; 3 of the 5 models returned no wrong value on C10 and C18.",
+    "3": "Completed age on a reference date, alone or combined (F2, F1+F2, F2+F3, F1+F2+F3): only gpt-oss-120b returned no wrong value on these 8 cells."
+  },
+  "uses": {
+    "dashboard": "Internal dashboard: an error misleads an internal reading and is corrected at the next refresh. Low cost of error.",
+    "customer": "Figure shown to a customer: an error leaves the company, the company is bound by what it displays (Lecture 2, Air Canada case). Medium to high cost.",
+    "payout": "Amount paid out: an error moves money and is hard to reverse. High cost."
+  },
+  "checks": {
+    "none": "No check: one call, the value is delivered as returned.",
+    "quorum": "k-of-n vote of Step 1 (vote_k_sur_n): strict majority, an unavailable member stays in n, one vote per provider and model pair; abstain without majority.",
+    "reference": "Validated reference query of the family (reference-td1.csv convention), run read-only on data/boutique.sqlite by the local deterministic route script#script (portfolio G5, local, 0 USD). The model value is delivered only if it is equal; otherwise no delivery, failure logged.",
+    "review": "A person who can read the source validates before delivery."
+  },
+  "panels": {
+    "fixed-2of3": {
+      "k": 2,
+      "members": ["gpt-oss-120b#groq", "north-mini-code:free#openrouter", "qwen3.8-27b#groq"],
+      "source": "Fixed panel of atelier-vote.py (Step 1)."
+    },
+    "P1-2of3": {
+      "k": 2,
+      "members": ["dots-3-note-preview:free#openrouter", "gpt-oss-20b#groq", "qwen3.8-27b#groq"],
+      "source": "Pair C panel for level-1 families: three distinct families (dots, openai, qwen), none with a wrong value on F1 or F3 in TD 1."
+    },
+    "all-3of5": {
+      "k": 3,
+      "members": ["gpt-oss-120b#groq", "gpt-oss-20b#groq", "north-mini-code:free#openrouter", "qwen3.8-27b#groq", "dots-3-note-preview:free#openrouter"],
+      "source": "3-of-5 quorum over the five TD 1 models (Step 1). gpt-oss-120b and gpt-oss-20b belong to the same family."
+    }
+  },
+  "families": {
+    "F1": {
+      "label": "period",
+      "level": 1,
+      "cases": ["C01", "C04", "C05", "C06", "C07", "C20"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "2-of-3 quorum, panel P1-2of3",
+        "customer": "2-of-3 quorum, panel P1-2of3",
+        "payout": "3-of-5 quorum, panel all-3of5, then reference; mismatch: no payment, human review"
+      }
+    },
+    "F3": {
+      "label": "product list",
+      "level": 1,
+      "cases": ["C03", "C12", "C13", "C14"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "2-of-3 quorum, panel P1-2of3",
+        "customer": "2-of-3 quorum, panel P1-2of3",
+        "payout": "3-of-5 quorum, panel all-3of5, then reference; mismatch: no payment, human review"
+      }
+    },
+    "F2b": {
+      "label": "age at the time of the order",
+      "level": 2,
+      "cases": ["C10"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "reference",
+        "customer": "reference; mismatch: abstain and log",
+        "payout": "reference, then human review before payment"
+      }
+    },
+    "F1+F2b": {
+      "label": "period + age at the time of the order",
+      "level": 2,
+      "cases": ["C18"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "reference",
+        "customer": "reference; mismatch: abstain and log",
+        "payout": "reference, then human review before payment"
+      }
+    },
+    "F2": {
+      "label": "completed age on a reference date",
+      "level": 3,
+      "cases": ["C02", "C08", "C09", "C11"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "reference",
+        "customer": "reference; mismatch: abstain and log",
+        "payout": "reference, then human review before payment"
+      }
+    },
+    "F1+F2": {
+      "label": "period + completed age on a reference date",
+      "level": 3,
+      "cases": ["C15"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "reference",
+        "customer": "reference; mismatch: abstain and log",
+        "payout": "reference, then human review before payment"
+      }
+    },
+    "F2+F3": {
+      "label": "completed age on a reference date + product list",
+      "level": 3,
+      "cases": ["C16"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "reference",
+        "customer": "reference; mismatch: abstain and log",
+        "payout": "reference, then human review before payment"
+      }
+    },
+    "F1+F2+F3": {
+      "label": "period + completed age on a reference date + product list",
+      "level": 3,
+      "cases": ["C17", "C19"],
+      "checks": {
+        "dashboard": "none",
+        "dashboard_if_not_100": "reference",
+        "customer": "reference; mismatch: abstain and log",
+        "payout": "reference, then human review before payment"
+      }
+    }
+  },
+  "resources": [
+    {
+      "id": "dots-3-note-preview:free#openrouter",
+      "model": "dots-studio/dots-3-note-preview:free",
+      "provider": "openrouter",
+      "vendor_family": "dots",
+      "access": "free",
+      "price_usd_per_million": {"input": 0, "output": 0},
+      "allocation": 0.0,
+      "price_source": "Absent from portefeuille-modeles-2026-09-28.csv; free route priced 0 on OpenRouter, read 21 October 2026 (five-model-summary-en.csv).",
+      "td1_evidence": {"provider": "openrouter", "model_requested": "dots-studio/dots-3-note-preview:free"},
+      "route_tested_in_td1": true
+    },
+    {
+      "id": "north-mini-code:free#openrouter",
+      "model": "cohere/north-mini-code:free",
+      "provider": "openrouter",
+      "vendor_family": "cohere",
+      "access": "free",
+      "price_usd_per_million": {"input": 0, "output": 0},
+      "allocation": 0.0,
+      "price_source": "Absent from portefeuille-modeles-2026-09-28.csv; free route priced 0 on OpenRouter, read 21 October 2026 (five-model-summary-en.csv).",
+      "td1_evidence": {"provider": "openrouter", "model_requested": "cohere/north-mini-code:free"},
+      "route_tested_in_td1": true
+    },
+    {
+      "id": "gpt-oss-20b#groq",
+      "model": "openai/gpt-oss-20b",
+      "provider": "groq",
+      "vendor_family": "openai",
+      "access": "free",
+      "price_usd_per_million": {"input": 0, "output": 0},
+      "allocation": 0.0,
+      "price_source": "Portfolio row gpt-oss-20b#groq: G5, free plan, candidate, index 9.0.",
+      "td1_evidence": {"provider": "groq", "model_requested": "openai/gpt-oss-20b"},
+      "route_tested_in_td1": true
+    },
+    {
+      "id": "qwen3.8-27b#groq",
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "vendor_family": "qwen",
+      "access": "free",
+      "price_usd_per_million": {"input": 0, "output": 0},
+      "allocation": 0.0,
+      "price_source": "Portfolio row qwen3.8-27b#groq: G5, free plan, candidate, index 33.7.",
+      "td1_evidence": {"provider": "groq", "model_requested": "qwen/qwen3.8-27b"},
+      "route_tested_in_td1": true
+    },
+    {
+      "id": "gpt-oss-120b#groq",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "vendor_family": "openai",
+      "access": "free",
+      "price_usd_per_million": {"input": 0, "output": 0},
+      "allocation": 0.0,
+      "price_source": "Portfolio row gpt-oss-120b#groq: G5, free plan, candidate, index 11.6.",
+      "td1_evidence": {"provider": "groq", "model_requested": "openai/gpt-oss-120b"},
+      "route_tested_in_td1": true
+    },
+    {
+      "id": "gpt-oss-120b#openrouter",
+      "model": "openai/gpt-oss-120b",
+      "provider": "openrouter",
+      "vendor_family": "openai",
+      "access": "tokens",
+      "price_usd_per_million": {"input": 0.15, "output": 0.6},
+      "allocation": null,
+      "price_source": "Portfolio row gpt-oss-120b#openrouter: G4, pay-per-token, candidate, 0.15 / 0.6 USD excl. tax per million tokens (prices read 29 September 2026).",
+      "td1_evidence": {"provider": "groq", "model_requested": "openai/gpt-oss-120b"},
+      "route_tested_in_td1": false,
+      "evidence_note": "Same model as gpt-oss-120b#groq: the portfolio states that capability does not change with the route, only price, quota and availability do. This route itself made no call in TD 1."
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "simple",
+      "kit_equivalent": "simple: difficulty 1, all resources available",
+      "request": {"family": "F1", "use": "dashboard", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {}
+    },
+    {
+      "name": "complex",
+      "kit_equivalent": "complex: difficulty 3, all resources available",
+      "request": {"family": "F2", "use": "dashboard", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {}
+    },
+    {
+      "name": "deferrable",
+      "kit_equivalent": "deferrable: difficulty 3, preferred included resource exhausted, refill in 60 minutes",
+      "request": {"family": "F2", "use": "dashboard", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {"gpt-oss-120b#groq": 60},
+      "assumption": "Groq free-plan limit of gpt-oss-120b reached (HTTP 429, as observed for qwen3.8-27b on C16, C17, C19, C20 in TD 1); announced refill in 60 minutes."
+    },
+    {
+      "name": "urgent",
+      "kit_equivalent": "urgent: difficulty 3, cannot wait, deadline 5 minutes, included resource exhausted",
+      "request": {"family": "F2", "use": "dashboard", "can_wait": false, "deadline_minutes": 5, "budget": 0.30},
+      "unavailable": {"gpt-oss-120b#groq": 60}
+    },
+    {
+      "name": "budget exhausted",
+      "kit_equivalent": "budget exhausted: difficulty 3, cannot wait, budget 0, included resource exhausted",
+      "request": {"family": "F2", "use": "dashboard", "can_wait": false, "deadline_minutes": 120, "budget": 0},
+      "unavailable": {"gpt-oss-120b#groq": 60}
+    },
+    {
+      "name": "high impact",
+      "kit_equivalent": "high impact: difficulty 3, high_impact true, all resources available",
+      "request": {"family": "F2", "use": "payout", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {}
+    },
+    {
+      "name": "unknown capability",
+      "kit_equivalent": "unknown capability: difficulty 4, above every resource",
+      "request": {"family": "F4", "use": "dashboard", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {},
+      "assumption": "F4 = average basket per customer segment: a question family absent from C01 to C20."
+    },
+    {
+      "name": "first model unavailable",
+      "added_by_pair_c": true,
+      "request": {"family": "F1", "use": "customer", "can_wait": false, "deadline_minutes": 5, "budget": 0.30},
+      "unavailable": {"dots-3-note-preview:free#openrouter": null},
+      "assumption": "OpenRouter free route of dots-3 unavailable with no announced refill (e.g. HTTP 401 as observed for cohere on C01 and C02 in TD 1)."
+    },
+    {
+      "name": "product list for a customer",
+      "added_by_pair_c": true,
+      "request": {"family": "F3", "use": "customer", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {}
+    },
+    {
+      "name": "age at the order",
+      "added_by_pair_c": true,
+      "request": {"family": "F2b", "use": "dashboard", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {}
+    },
+    {
+      "name": "age at the order, two routes down",
+      "added_by_pair_c": true,
+      "request": {"family": "F1+F2b", "use": "dashboard", "can_wait": false, "deadline_minutes": 5, "budget": 0.30},
+      "unavailable": {"gpt-oss-20b#groq": 1, "qwen3.8-27b#groq": 1}
+    },
+    {
+      "name": "combined age question for a customer",
+      "added_by_pair_c": true,
+      "request": {"family": "F1+F2+F3", "use": "customer", "can_wait": true, "deadline_minutes": 120, "budget": 0.30},
+      "unavailable": {}
+    }
+  ]
+}
