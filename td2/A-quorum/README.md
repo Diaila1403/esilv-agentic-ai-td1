@@ -1,37 +1,58 @@
-# TD 2 Pair A Step 1: the k-of-n vote
+# TD2 Pair A: k-of-n Voting
+**Members:** Diaila DIALLO, Meriam BOUMEDIENE  
+**Date:** 18 November 2026
 
-**Members:** Diaila DIALLO, Meriam BOUMEDIENE · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
-**Report section:** [`reports/td2.md`, Step 1](../../reports/td2.md#step-1--k-of-n-vote-pair-a) · **Reviews received:** [`review-1.md`](review-1.md) by Pair B, [`review-2.md`](review-2.md) by Pair C
+## 1. What we wanted to do
+In this part of TD2, our goal was to understand how several AI models can work together to make a decision.
+During TD1, we noticed that models could return different answers to the same question. Sometimes, they could even agree on a wrong answer.
+We wanted to see whether using a voting system with more models could make the final decision more reliable.
 
-## What was done
+## 2. Our implementation
+We completed the `vote_k_sur_n()` function in `skeleton-multi-llm-en.py`.
+The idea is simple: a response is accepted only if at least `k` out of `n` models agree on the same value.
+We also had to respect some important rules:
+- Only successfully executed responses with a valid value can vote.
+- An unavailable model still counts in the total number of models.
+- The required number of votes must be a strict majority.
+- The same model cannot vote twice.
+- If there are not enough matching votes, the system abstains.
+We tested our function using `atelier-vote.py`, including cases where models disagree, become unavailable or agree on an incorrect answer.
+We also ran `check_vote_contract.py`, and all **13 tests passed**.
 
-- `Orchestrateur.vote_k_sur_n` completed in `skeleton-multi-llm-en.py`: only executed proposals with a value vote, an unavailable member stays in n, k must be a strict majority (`n // 2 < k <= n`, else `ValueError`), a duplicate provider and model pair raises `ValueError`, abstention without a value when no value reaches k.
-- The four synthetic examples of `atelier-vote.py` run: agreement, disagreement, unavailable members, wrong consensus.
-- The twenty questions decided by the fixed 2-of-3 panel (gpt-oss-120b, north-mini-code:free, qwen3.8-27b, k = 2) and by the 3-of-5 quorum over the five TD 1 models (k = 3), on the last attempt of each cell of `traces-td1.csv`: [`comparaison-votes.csv`](comparaison-votes.csv).
+## 3. Connection with what we learned in class
+In class, we discussed why working with several LLM APIs can be challenging.
+For example, an API can return an HTTP error such as **429**, meaning that too many requests have been sent. In that situation, a retry mechanism can be useful, sometimes with a delay before trying again.
+We also discussed timeouts, including waiting limits such as 5 seconds, to avoid blocking the whole system when a model takes too long to respond.
+These concepts are important for our voting system because a model might fail to produce an answer even after retries.
+In our part, we did not implement a new retry mechanism. Instead, we used the execution results already available in the TD1 traces.
+This helped us understand an important point: **a model that fails or times out should not vote, but it should still count in the original panel size.**
 
-## Files
+## 4. Comparing 2-of-3 and 3-of-5
+We wrote `comparaison-votes.py` to compare two voting configurations using the 20 questions from TD1.
+- **2of3:** at least 2 out of 3 models must agree.
+- **3of5:** at least 3 out of 5 models must agree.
+We used `traces-td1.csv` to recover the models' answers and `reference-td1.csv` to check whether the accepted answers were correct.
+The results were saved in `comparaison-votes.csv`.
 
-| File | Content | Origin |
-|---|---|---|
-| [`skeleton-multi-llm-en.py`](skeleton-multi-llm-en.py) | Kit skeleton with `vote_k_sur_n` completed | Pair A |
-| [`comparaison-votes.py`](comparaison-votes.py) | Builds the 2-of-3 versus 3-of-5 table | Pair A; paths fixed by Pair C, see the review |
-| [`comparaison-votes.csv`](comparaison-votes.csv) | The twenty decisions: consensus, value, votes, agreement with the reference | Pair A, regenerated identical |
-| [`atelier-vote.py`](atelier-vote.py) | Kit driver of the vote (synthetic examples, one real question) | kit, unchanged |
-| [`sandbox_sqlite.py`](sandbox_sqlite.py) | Kit read-only SQLite sandbox, imported by the skeleton when it loads | kit, unchanged |
-| [`check_vote_contract.py`](check_vote_contract.py) | Thirteen contract checks: duplicates, k bounds, unavailable members with n = 5, value 0 | Pair C, cross-review |
+## 5. What we observed
+Out of 20 questions, **18 decisions stayed the same**, while **2 changed**.
+The two interesting cases were:
+**C02:** The 2of3 system accepted the correct answer, 590320. However, the 3-of-5 system abstained because there were not enough matching votes.
+**C09:** The 2of3 system accepted 0, even though the correct answer was 487980. With 3-of-5, the system abstained instead of accepting this wrong answer.
+For C17, both configurations abstained.
+These results showed us that increasing the required number of votes can prevent some incorrect consensuses, but it can also reject correct answers.
 
-## Replay (from the repository root, no key, no network)
-
+## 6. How to reproduce our results
+From the repository root:
 ```bash
-python3 td2/A-quorum/atelier-vote.py                                   # four synthetic examples
-python3 td2/A-quorum/atelier-vote.py --traces td1/traces-td1.csv --case C09 # wrong consensus kept by 2-of-3
-python3 td2/A-quorum/atelier-vote.py --traces td1/traces-td1.csv --case C17 # abstention (largest count 1)
-python3 td2/A-quorum/comparaison-votes.py                              # rewrites comparaison-votes.csv
-python3 td2/A-quorum/check_vote_contract.py                            # 13/13 PASS
+python3 td2/A-quorum/atelier-vote.py
+python3 td2/A-quorum/comparaison-votes.py
+python3 td2/A-quorum/check_vote_contract.py
 ```
+The comparison evaluates 20 questions and identifies 2 changed decisions. The contract tests pass (13/13).
 
-## Main results
-
-- 18 of the 20 decisions are the same in 2-of-3 and 3-of-5. C02: correct consensus 590320 in 2-of-3, abstention in 3-of-5. C09: wrong consensus 0 in 2-of-3 (north-mini-code and qwen, reference 487980), abstention in 3-of-5.
-- C17: both abstain.
-- A larger quorum removes the wrong consensus of C09 at the price of an abstention on C02.
+## 7. Conclusion
+This exercise helped us understand that agreement between AI models does not necessarily mean that their answer is correct.
+We also saw why handling unavailable models matters when designing a reliable voting system.
+The 3-of-5 configuration avoided the incorrect consensus observed in C09, but it also abstained on the correct answer in C02.
+**Our main takeaway is that a stronger voting requirement does not automatically guarantee better answers. It creates a trade-off between accepting answers and abstaining when there is not enough agreement.**
