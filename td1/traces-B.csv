@@ -125,3 +125,4 @@ groq:openai/gpt-oss-20b:C20,groq,openai/gpt-oss-20b,openai/gpt-oss-20b,C20,"What
 FROM orders o
 JOIN product p ON o.product_id = p.product_id
 WHERE o.date >= '2026-06-01 00:00:00' AND o.date < '2026-09-01 00:00:00';",1106090,1106090,correct,,200,,410.4,638,103,17,,1,2026-10-21 13:20:36,real
+
