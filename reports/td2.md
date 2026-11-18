@@ -1,7 +1,7 @@
 # TD2: Quorum and Routing Rule
 
 **Sub-group:** DIA5-G3 (DIA5) · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5 · **Repository:** https://github.com/Diaila1403/esilv-agentic-ai-td1
-**Members:** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAQ, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
+**Members:** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAG, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
 
 ## Organisation of the work
 Each pair owns one step and one folder under [`td2/`](../td2/README.md). Each folder holds the pair's files, a `README.md` (what was done, files, commands that replay it) and the two reviews it received at the cross-review: `review-1.md` and `review-2.md`, written by the two other pairs in alphabetical order (A: B then C; B: A then C; C: A then B).
@@ -380,7 +380,7 @@ A subscription has `cash == 0`, so it belongs to `included` whatever its `alloca
 
 ### 8. Contribution and AI assistance
 
-- Pair C, Step 3: Jean VASSEUR, Lina ZAAQ.
+- Pair C, Step 3: Jean VASSEUR, Lina ZAAG.
 - AI-assisted work, declared as the assessment requires: Claude Code was used to write the Step 3 scripts, compute the tables, draft this section and draft Pair C's reviews of Pairs A and B, from the traces, the assignment and Lecture 2. Prompts as used, 18 November 2026: "Ensuite il faut faire le td2 ici : https://storage.googleapis.com/docs.g.quanticfactory.io/ESILV/next-generation-ai/latest/index.html, moi je suis chargé de la partie STEP3 (pair C), fais la pour moi."; "il faut mettre un sous dossier par binome , avec un readme par binome et par TD  et une review opur les autres binomes, fais les reviews des autres et push tout"; "ok la paire B a push , fais la review et push". Pair C re-ran every command and query cited and remains responsible for every line.
 
 ## Cross-review (16:45 to 17:15)
@@ -402,7 +402,7 @@ Every pair reviews the two others; a review states what was re-run, what holds, 
 |---|---|---|
 | A | Diaila DIALLO, Meriam BOUMEDIENE, | Step 1: `vote_k_sur_n`, synthetic examples, 2-of-3 versus 3-of-5 table |
 | B | Simeon SIMEONOV, Arthur GAUCHE, Imane BOUNA MOCTAR | Step 2: wrong consensus C09, faulty SQL diagnosis, delta SQL query |
-| C | Jean VASSEUR, Lina ZAAQ | Step 3: rates per family, routing rule, adapted simulator, priority analysis; per-pair layout; reviews of Pairs A and B |
+| C | Jean VASSEUR, Lina ZAAG | Step 3: rates per family, routing rule, adapted simulator, priority analysis; per-pair layout; reviews of Pairs A and B |
 
 ## Next steps
 
