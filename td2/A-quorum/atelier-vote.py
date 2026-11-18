@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """TD 2: run your vote on four synthetic examples, or on the stored traces of one question.
 
 No network, no key. The panel is fixed to three distinct model families. The
