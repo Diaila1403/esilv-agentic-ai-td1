@@ -1,9 +1,7 @@
 # TD 2 · Pair A · Step 1: the k-of-n vote
 
-**Members:** Diaila DIALLO, *[to complete]* · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
-**Report section:** [`reports/td2.md`, Step 1](../../reports/td2.md#step-1--k-of-n-vote-pair-a) · **Reviews received:** [`review-1.md`](review-1.md) by Pair B (to write), [`review-2.md`](review-2.md) by Pair C
-
-*README written by Pair C at the cross-review (18 November 2026), from Pair A's report and commits `b53981c` to `bcd4ed3`; Pair A to check and complete.*
+**Members:** Diaila DIALLO, Meriam BOUMEDIENE · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5
+**Report section:** [`reports/td2.md`, Step 1](../../reports/td2.md#step-1--k-of-n-vote-pair-a) · **Reviews received:** [`review-1.md`](review-1.md) by Pair B, [`review-2.md`](review-2.md) by Pair C
 
 ## What was done
 
