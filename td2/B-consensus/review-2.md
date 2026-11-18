@@ -1,6 +1,6 @@
 # Review of Pair B (Step 2, wrong consensus) by Pair C
 
-**Reviewed:** Step 2 of `reports/td2.md` at commit `04c8f06` (18 November 2026, 15:11; `main` at `76c5a41` when reviewed). Pair B: Simeon SIMEONOV, Arthur GAUCHÉ, Imane BOUNA MOCTAR. **Reviewers:** Pair C (Jean VASSEUR). **Date:** 18 November 2026.
+**Reviewed:** Step 2 of `reports/td2.md` at commit `04c8f06` (18 November 2026, 15:11; `main` at `76c5a41` when reviewed). Pair B: Simeon SIMEONOV, Arthur GAUCHÉ, Imane BOUNA MOCTAR. **Reviewers:** Pair C (Jean VASSEUR, Lina ZAAG). **Date:** 18 November 2026.
 
 **Verdict:** the analysis is right and every figure holds. We re-derived it from `td1/traces-td1.csv` and re-executed every query on `data/boutique.sqlite`. The content meets the Q2 level 2 evidence: two models with the same wrong value, the reference, the quorum result kept apart from the agreement, the cause in the SQL and an independent check. What is missing is the evidence in the repository: nothing in `td2/B-consensus/` replays the analysis, and the "delta" query does not involve the faulty clauses. Four changes are requested. None of them changes a number.
 
