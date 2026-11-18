@@ -1,6 +1,6 @@
 # Review of Pair A (Step 1, k-of-n vote) by Pair C
 
-**Reviewed:** commit `b53981c` (18 November 2026, 14:19; files then moved by Pair A into this folder, commits `06f72c1` to `bcd4ed3`, whitespace changes only), files `skeleton-multi-llm-en.py`, `comparaison-votes.py`, `comparaison-votes.csv`, Step 1 of `reports/td2.md`. **Reviewers:** Pair C (Jean VASSEUR). **Date:** 18 November 2026.
+**Reviewed:** commit `b53981c` (18 November 2026, 14:19; files then moved by Pair A into this folder, commits `06f72c1` to `bcd4ed3`, whitespace changes only), files `skeleton-multi-llm-en.py`, `comparaison-votes.py`, `comparaison-votes.csv`, Step 1 of `reports/td2.md`. **Reviewers:** Pair C (Jean VASSEUR, Lina ZAAG). **Date:** 18 November 2026.
 
 **Verdict:** the vote is correct and the table is right. Two reproducibility problems blocked a replay from a fresh clone; Pair C fixed them at the review (please confirm). Four changes are requested for the report, two of them to reach level 2 on Q1.
 
