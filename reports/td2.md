@@ -1,4 +1,4 @@
-# TD2 — Quorum and Routing Rule
+# TD2: Quorum and Routing Rule
 
 **Sub-group:** DIA5-G3 (DIA5) · **Session:** 18 November 2026 · **Pack:** 2026-11-18-students-5 · **Repository:** https://github.com/Diaila1403/esilv-agentic-ai-td1
 **Members:** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAQ, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
