@@ -1,7 +1,7 @@
 # esilv-agentic-ai-td1
 # Trustworthy Generative AI : TD1 à TD3
 
-**Classe :** DIA5 · **Sous-groupe :** DIA5-G3 · **Membres :** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAQ, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
+**Classe :** DIA5 · **Sous-groupe :** DIA5-G3 · **Membres :** Diaila DIALLO, Meriam BOUMEDIENE, Lina ZAAG, Imane BOUNA MOCTAR, Arthur GAUCHÉ, Jean VASSEUR, Simeon SIMEONOV
 
 ## Présentation du projet
 Ce dépôt contient le travail du sous-groupe pour les trois TD du cours Next Generation AI à l'ESILV (thème « Trustworthy Generative AI »). Le TD1 teste et compare cinq modèles d'IA générative gratuits sur 20 questions text-to-SQL. Le TD2 fait voter ces modèles et écrit la règle de routage. Le TD3 chiffre les configurations et choisit l'une d'elles pour un cas d'usage.

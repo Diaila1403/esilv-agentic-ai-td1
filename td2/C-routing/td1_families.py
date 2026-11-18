@@ -22,6 +22,7 @@ Usage, from the repository root:
 """
 import argparse
 import csv
+import io
 import json
 from collections import Counter
 from pathlib import Path
@@ -40,26 +41,46 @@ def traces_path(config, override=None):
     return Path(override) if override else ROOT / config["traces"]
 
 
+TRACE_COLUMNS = ("provider", "model_requested", "case_id", "value", "reference",
+                 "verdict", "http_status", "attempts", "date_utc")
+
+
+def read_trace_rows(path):
+    """Rows of a TD 1 trace file, checked before use.
+
+    Blank lines above the header (a web editor added one on 18 November 2026,
+    which turned the header into an empty row) are skipped. A file without the
+    trace columns stops with a readable message instead of a KeyError.
+    """
+    with open(path, newline="", encoding="utf-8") as handle:
+        text = handle.read()
+    reader = csv.DictReader(io.StringIO(text.lstrip("\r\n"), newline=""))
+    missing = [name for name in TRACE_COLUMNS if name not in (reader.fieldnames or [])]
+    if missing:
+        first = text.lstrip("\r\n").splitlines()[:1]
+        raise SystemExit(f"{path}: not a TD 1 trace file, missing column(s) {', '.join(missing)}; "
+                         f"first line: {first[0][:80] if first else '(empty file)'!r}")
+    return list(reader)
+
+
 def last_attempts(path):
     """Return {(provider, model_requested, case_id): row}, keeping the last attempt."""
     cells = {}
-    with open(path, newline="", encoding="utf-8") as handle:
-        for row in csv.DictReader(handle):
-            key = (row["provider"], row["model_requested"], row["case_id"])
-            rank = (int(row["attempts"] or 0), row["date_utc"])
-            if key not in cells or rank >= cells[key][0]:
-                cells[key] = (rank, row)
+    for row in read_trace_rows(path):
+        key = (row["provider"], row["model_requested"], row["case_id"])
+        rank = (int(row["attempts"] or 0), row["date_utc"])
+        if key not in cells or rank >= cells[key][0]:
+            cells[key] = (rank, row)
     return {key: rank_row[1] for key, rank_row in cells.items()}
 
 
 def failed_attempt_cells(path):
     """Cells with at least one attempt that returned no value (HTTP 401, 429...)."""
     failed = {}
-    with open(path, newline="", encoding="utf-8") as handle:
-        for row in csv.DictReader(handle):
-            if row["verdict"] in ("access_error", "not_executed"):
-                key = (row["provider"], row["model_requested"])
-                failed.setdefault(key, set()).add(row["case_id"])
+    for row in read_trace_rows(path):
+        if row["verdict"] in ("access_error", "not_executed"):
+            key = (row["provider"], row["model_requested"])
+            failed.setdefault(key, set()).add(row["case_id"])
     return failed
 
 

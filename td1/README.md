@@ -25,4 +25,6 @@ Five free models (gpt-oss-120b, gpt-oss-20b and qwen3.8-27b on Groq; north-mini-
 | north-mini-code:free | 14 |
 | dots-3-note-preview:free | 13 |
 
+**Evidence files: do not edit them by hand**, not even to add a blank line. They are the record of the TD 1 calls (R2: lines written by hand after the calls score 0), and the TD 2 scripts read them: a blank line above the header of `traces-td1.csv` stops every replay. They were restored byte-identical to the TD 1 version on 18 November 2026.
+
 These files moved from the repository root to `td1/` on 18 November 2026 to follow the `td1/ td2/ td3/ reports/` layout; their content is unchanged. The submitted TD 1 version is the commit recorded in Moodle.
