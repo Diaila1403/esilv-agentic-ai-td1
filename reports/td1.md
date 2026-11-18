@@ -79,7 +79,7 @@ The consolidated file contains **104 real-call rows** for **100 distinct model/q
 
 | Member | Contribution |
 |---|---|
-| Lina ZAAQ | Model A calls and trace verification |
+| Lina ZAAG | Model A calls and trace verification |
 | Diaila DIALLO | Model B calls, trace verification and review of C02/C11 |
 | Meriam BOUMEDIENE | Model C calls and trace verification |
 | Simeon SIMEONOV | Model D calls, retries and rate-limit investigation |
